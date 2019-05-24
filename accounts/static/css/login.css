@@ -5,19 +5,53 @@
     font-weight: normal; 
     font-style: normal; 
 }
+@font-face { 
+    font-family: 'yg-jalnan'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') 
+    format('woff'); 
+    font-weight: normal; 
+    font-style: normal; 
+}
+@font-face { 
+    font-family: 'BBTreeGR'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGR.woff') 
+    format('woff'); 
+    font-weight: normal; 
+    font-style: normal; 
+}
 
 body {
-
 	line-height: 1.2;
-    background: #ffffff url('../image/logincover.jpg') no-repeat;
+    background: #ffffff url('../image/loginback.png') no-repeat;
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
-	font-family: 'Open Sans', sans-serif;
+}
+#login-section1 .inner{
+    width:100%;
+    margin-top: -150px;
+}
+#title{
+    display: inline-block;
+    vertical-align: middle;
+    font-family: 'yg-jalnan';
+    font-size: 1.9em;
+    padding-top: 90px;
+    color: white;
+    flex:2;
+}
+.color{
+    color: rgb(245, 221,147);
+}
+#logoimg{
+    display: inline-block;
+    vertical-align: middle;
+    flex:4;
+    height: 150px;
+    width: auto;
 }
 
 #login-section1 { 
-    font-family: 'WONDotum';
     color: #f8f7f4;
     width: 100%; 
     height: 100vh;
@@ -33,17 +67,17 @@ body {
 #login-section1 .button.alt { /*소셜_네이버 로그인 버튼 코드*/
     background-color: transparent;
     box-shadow: inset 0 0 0 2px ;
-    color: #ffffff !important;
+    color:rgb(245, 221,147); !important;
 }
 
 
 .button { /*소셜로그인 버튼 테두리 네모 코드*/
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-    border-radius: 0;
+    border-radius: 77px;
     border: 0;
     cursor: pointer;
     display: inline-block;
-    font-family: 'WONDotum';
+    font-family: 'yg-jalnan';
     font-size: .8em;
     font-weight: 700;
     height: 3.5em;
@@ -55,15 +89,17 @@ body {
     text-transform: uppercase;
     white-space: nowrap;
 }
-
+.ps{
+    font-family: 'BBTreeGR';
+}
 #login-section1 .head-container h2{
     color: #FFFFFF;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'BBTreeGR', monospace;
 }
 
 .errormessage{
     color: #FF0000;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'BBTreeGR', monospace;
 }
 
 /*
