@@ -37,4 +37,5 @@ urlpatterns = [
     path('delete/<int:scrap_id>', scrap.views.delete, name="delete"),
     path('logout/', scrap.views.logout, name="logout"),
     path('foldermake/', scrap.views.foldermake, name="foldermake"),
+    path('edit/<int:scrap_id>', scrap.views.edit, name="edit"),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

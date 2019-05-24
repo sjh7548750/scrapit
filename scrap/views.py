@@ -74,3 +74,11 @@ def logout(request):
 
 def foldermake(request):
     return render(request, 'scrap/foldermake.html')
+
+def edit(request, scrap_id):
+    scrap = get_object_or_404(Scrap, pk=scrap_id)
+    scrap.title = request.GET['title']
+    scrap.description = request.GET['description']
+    scrap.save()
+
+    return redirect('home')
