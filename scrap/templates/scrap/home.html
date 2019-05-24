@@ -82,11 +82,11 @@
             {% for scrap in user.scrap_set.all %}
             <div class="col-md-3 col-sm-3 col-xs-6">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header" onclick="window.open('{{scrap.address}}')" style="cursor:pointer;" >
                         <h5 class="card-title">{{scrap.title}}</h5>
                         <p class="card-text">{{scrap.address}}</p>
+                        <img src="/media/{{scrap.preview}}" class="card-img-top">
                     </div>
-                    <img src="/media/{{scrap.preview}}" class="card-img-top">
                     <div class="card-footer">
                         <small class="text-muted">{{scrap.pub_date}}</small>
                     </div>
