@@ -93,6 +93,7 @@ def edit(request, scrap_id):
     scrap = get_object_or_404(Scrap, pk=scrap_id)
     scrap.title = request.GET['title']
     scrap.description = request.GET['description']
+    folder = scrap.folder.id
     scrap.save()
-
-    return redirect('home')
+    
+    return redirect('/folder/'+str(folder))
