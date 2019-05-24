@@ -61,8 +61,8 @@
                         {% csrf_token %}
                         <div class="form-row">
                             <div class="col-12 col-md-9 mb-2 mb-md-0">
-                                <input type="url" class="form-control form-control-lg" name="url"
-                                    style="background-color: rgb(86, 128, 56)" placeholder="ex) https://www.naver.com">
+                                <input type="url" class="form-control form-control-lg" id="linkinsert"
+                                    style="background-color: rgb(86, 128, 56); color:rgb(245, 221,147);" placeholder="ex) https://www.naver.com">
                             </div>
                             <div class="col-12 col-md-3">
                                 <button type="submit" class="btn btn-block btn-lg btn-outline-dark">Scrap</button>
@@ -114,7 +114,14 @@
     </section>
     {% else %}
 <!-- 로그인 안된 접근시 로그인 페이지로 갈 수 있는 버튼 -->
-
+    <section class="relogin">
+        <div class="message">
+            <h1 class="relogin_message">올바른 접속이 아닙니다!<br>아래 버튼을 눌러 로그인 후 접속해주세요</h1><br>
+            <div class="go">
+                <a href="{% url 'login' %}" class="btn btn-outline-danger">GO_Login</a>
+            </div>
+        </div>
+    </section>
     {% endif %}
 <!--
 <div id="jquerySideBar1558365128135" class="sidebar-container left" style="height:200px; width:200px; top: 250px; left: 0px">
