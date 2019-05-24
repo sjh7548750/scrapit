@@ -39,4 +39,5 @@ urlpatterns = [
     path('folder/', scrap.views.folder, name="folder"),
     path('create/<int:folder_id>', scrap.views.create, name="create"),
     path('delete/<int:scrap_id>', scrap.views.delete, name="delete"),
+    path('edit/<int:scrap_id>', scrap.views.edit, name="edit"),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

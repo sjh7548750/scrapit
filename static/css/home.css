@@ -83,7 +83,7 @@ header.masthead {
     padding-top:3em;
     padding-bottom: 40em;
     background-color: #0c0c0c;
-    background-image: url(homeback.png);
+    background: url("../image/homeback.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 15% right;
@@ -119,7 +119,13 @@ header.masthead .overlay {
         color: rgb(86, 128, 56);
     }
 }
+
 #linkinsert::placeholder{
+    color:white;
+    font-family: 'BBTreeGR';
+}
+
+input::-webkit-input-placeholder{
     color:white;
     font-family: 'BBTreeGR';
 }
@@ -153,3 +159,35 @@ header.masthead .overlay {
     padding-left:15px;
     padding-bottom:50px;
 }
+
+.relogin{
+    color: #f8f7f4;
+    padding-top:3em;
+    padding-bottom: 40em;
+    background-color: #0c0c0c;
+    background: url("../image/homeback2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 15% right;
+    text-align: right;
+    position: relative;
+    z-index: 9999;
+}
+.relogin_message{
+    margin-top: 200px;
+    font-family: 'yg-jalnan';
+    font-size: 2em;
+    text-align: center;
+    vertical-align: middle;
+    color:red;
+}
+.message .go{
+    margin-left: 40%;
+}
+.btn-outline-danger{
+    text-align: center;
+    display: block;
+    width:30%;
+    font-family: 'yg-jalnan'
+}
+
