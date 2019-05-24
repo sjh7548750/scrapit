@@ -54,14 +54,14 @@
         <div class="container">
             <div class="row-page">
                 <div class="col-xl-9 mx-auto">
-                    <h1 class="mb-5">Scrap your LINK!</h1>
+                    <h1 class="mb-5">Make your FOLDER!</h1>
                 </div>
                 <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                    <form action = "{% url 'create' %}" method="post">
+                    <form action = "{% url 'foldermake' %}" method="post">
                         {% csrf_token %}
                         <div class="form-row">
                             <div class="col-12 col-md-9 mb-2 mb-md-0">
-                                <input type="url" class="form-control form-control-lg" name="url"
+                                <input type="text" class="form-control form-control-lg" name="folder_name"
                                     style="background-color: rgb(86, 128, 56)" placeholder="폴더만들어주이소">
                             </div>
                             <div class="col-12 col-md-3">
@@ -82,12 +82,14 @@
     <!-- 저장한 링크 뜨는 부분 -->
     <section class=cardlist>
         <div class="row" style="margin-top:60px">
-            {% for scrap in user.scrap_set.all %}
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="card">
-                    <div class="card-header" onclick="window.open('{{scrap.address}}')" style="cursor:pointer;" >
-                        <h5 class="card-title">{{scrap.title}}</h5>
-                    </div>
+            {% for folder in user.folder_set.all %}
+            <a href="{% url 'home' folder.id %}">
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                    <div class="card">
+                        <div class="card-header"  style="cursor:pointer;" ></div>
+                        {{folder.id}}
+                            <h5 class="card-title">{{folder.title}}</h5>
+                        </div>
 
 
                     <!-- 드랍다운 버튼 -->
@@ -103,7 +105,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>    
             {% endfor %}
         </div>
     </section>

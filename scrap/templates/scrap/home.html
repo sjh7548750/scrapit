@@ -58,7 +58,7 @@
                     <h1 class="mb-5">Scrap your LINK!</h1>
                 </div>
                 <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                    <form action = "{% url 'create' %}" method="post">
+                    <form action = "{% url 'create' folder_detail.id %}" method="post">
                         {% csrf_token %}
                         <div class="form-row">
                             <div class="col-12 col-md-9 mb-2 mb-md-0">
@@ -83,7 +83,7 @@
     <!-- 저장한 링크 뜨는 부분 -->
     <section class=cardlist>
         <div class="row" style="margin-top:60px">
-            {% for scrap in user.scrap_set.all %}
+            {% for scrap in folder_detail.scrap_set.all %}
             <div class="col-md-3 col-sm-3 col-xs-6">
                 <div class="card">
                     <div class="card-header" onclick="window.open('{{scrap.address}}')" style="cursor:pointer;" >
@@ -149,7 +149,14 @@
     
     {% else %}
 <!-- 로그인 안된 접근시 로그인 페이지로 갈 수 있는 버튼 -->
-
+    <section class="relogin">
+        <div class="message">
+            <h1 class="relogin_message">올바른 접속이 아닙니다!<br>아래 버튼을 눌러 로그인 후 접속해주세요</h1><br>
+            <div class="go">
+                <a href="{% url 'login' %}" class="btn btn-outline-danger">GO_Login</a>
+            </div>
+        </div>
+    </section>
     {% endif %}
 <!--
 <div id="jquerySideBar1558365128135" class="sidebar-container left" style="height:200px; width:200px; top: 250px; left: 0px">

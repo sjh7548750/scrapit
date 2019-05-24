@@ -9,7 +9,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
-from .models import Scrap
+from .models import Scrap, Folder
 import requests
 from django.core.files import File
 from django.contrib.auth.models import User
@@ -20,12 +20,13 @@ from django.contrib import auth
 def about(request):
     return render(request, 'scrap/about.html')
 
-def home(request):
+def home(request, folder_id):
     ##scraps = Scrap.objects
+    folder_detail = get_object_or_404(Folder,pk=folder_id)
     scraps = Scrap.objects.all().order_by('-id')
-    return render(request, 'scrap/home.html', {'scraps':scraps})
+    return render(request, 'scrap/home.html', {'folder_detail':folder_detail})
 
-def create(request):
+def create(request, folder_id):
     scrap = Scrap() #스크랩이라는 붕어빵 틀 만듬
     scrap.address = request.POST['url'] #스크랩 주소넣기
     scrap.pub_date = timezone.datetime.now() #스크랩날짜넣기
@@ -57,11 +58,11 @@ def create(request):
     reopen = open("static/save_screenshot/my_screenshot.png", "rb")
     django_file = File(reopen)
     scrap.preview.save("screenshot.png", django_file, save=True) #image model에 image저장
-    scrap.user = request.user
+    scrap.folder = get_object_or_404(Folder, pk=folder_id)
     #get_object_or_404(User, pk=request.GET['user_id'])
     scrap.save()
-
-    return redirect('home')
+    #return render(request, 'scrap/home.html', {'folder':folder_id})
+    return redirect('/folder/' + str(folder_id))
 
 def delete(request, scrap_id):
     scraps = get_object_or_404(Scrap, pk=scrap_id)
@@ -72,8 +73,21 @@ def logout(request):
     auth.logout(request) #로그아웃 상태로 바꾸기
     return render(request, 'scrap/about.html')
 
+def folder(request):
+    folders = Folder.objects.all().order_by('-id')
+    return render(request, 'scrap/folder.html', {'folders':folders})
+
 def foldermake(request):
-    return render(request, 'scrap/foldermake.html')
+    folder = Folder()
+    folder.title = request.POST['folder_name']
+    folder.user = request.user
+    folder.save()
+    return redirect('folder')
+
+def delete_folder(request, folder_id):
+    folder = get_object_or_404(Folder, pk=folder_id)
+    folder.delete()
+    return redirect('folder')
 
 def edit(request, scrap_id):
     scrap = get_object_or_404(Scrap, pk=scrap_id)

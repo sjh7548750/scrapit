@@ -67,7 +67,7 @@ body {
 #login-section1 .button.alt { /*소셜_네이버 로그인 버튼 코드*/
     background-color: transparent;
     box-shadow: inset 0 0 0 2px ;
-    color:rgb(245, 221,147); !important;
+    color: white !important;
 }
 
 
@@ -78,7 +78,7 @@ body {
     cursor: pointer;
     display: inline-block;
     font-family: 'yg-jalnan';
-    font-size: .8em;
+    font-size: .9em;
     font-weight: 700;
     height: 3.5em;
     width: 30%;
@@ -91,6 +91,7 @@ body {
 }
 .ps{
     font-family: 'BBTreeGR';
+    color: rgb(245, 221,147);
 }
 #login-section1 .head-container h2{
     color: #FFFFFF;
