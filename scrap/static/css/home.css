@@ -78,7 +78,7 @@
     flex: 1;
 }
 
-header.masthead {
+section.masthead {
     color: #f8f7f4;
     padding-top:3em;
     padding-bottom: 40em;
@@ -89,7 +89,7 @@ header.masthead {
     background-position: 15% right;
     text-align: right;
     position: relative;
-    z-index: 9999;
+    z-index: 99;
 /*
     position: relative;
     background-color:rgb(86, 128, 56);
@@ -99,7 +99,7 @@ header.masthead {
     padding-bottom: 0;*/
 }
 
-header.masthead .overlay {
+section.masthead .overlay {
     position: absolute;
     height: 70%;
     width: 100%;
@@ -109,11 +109,11 @@ header.masthead .overlay {
 }
 
 @media (min-width: 768px) {
-    header.masthead {
+    section.masthead {
         padding-top: 8rem;
         padding-bottom: 8rem;
     }
-    header.masthead h1 {
+    section.masthead h1 {
         font-family: 'yg-jalnan';
         font-size: 3rem;
         color: rgb(86, 128, 56);
@@ -152,4 +152,8 @@ header.masthead .overlay {
     padding-right: 15px;
     padding-left:15px;
     padding-bottom:50px;
+}
+
+.modal {
+    z-index: 9999;
 }
