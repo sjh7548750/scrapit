@@ -74,7 +74,7 @@ def logout(request):
     return render(request, 'scrap/about.html')
 
 def folder(request):
-    folders = Folder.objects.all().order_by('-id')
+    folders = Folder.objects.all()
     return render(request, 'scrap/folder.html', {'folders':folders})
 
 def foldermake(request):
@@ -97,3 +97,10 @@ def edit(request, scrap_id):
     scrap.save()
     
     return redirect('/folder/'+str(folder))
+
+def folder_edit(request, folder_id):
+    folder = get_object_or_404(Folder, pk=folder_id)
+    folder.title = request.GET['title']
+    folder.save()
+
+    return redirect('folder')

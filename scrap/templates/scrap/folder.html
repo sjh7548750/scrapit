@@ -85,24 +85,68 @@
             {% for folder in user.folder_set.all %}
             <a href="{% url 'home' folder.id %}">
                 <div class="col-md-3 col-sm-3 col-xs-6">
-                    <div class="card">
+                    <div class="card" >
                         <div class="card-header"  style="cursor:pointer;" ></div>
+                            <img src="{% static 'image/폴더.png' %}" style="height: 320px;">
                             <h5 class="card-title">{{folder.title}}</h5>
-                        </div>
+                    </div>
 
 
                     <!-- 드랍다운 버튼 -->
-                    <div class="btn-group">
+                    <!-- Example single danger button -->
+                    <div style="display:none;" class="btn-group">
                         <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Action
                         </button>
                         <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">제목변경</a>
-                        <a class="dropdown-item" href="#">내용변경</a>
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        더 보기
+                        </button>
+                        <div class="dropdown-menu">
+                        <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal" href="#">제목변경</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{% url 'delete_folder' folder.id %}">삭제하기</a>
                         </div>
                     </div>
+
+                    <form action="{% url 'folder_edit' folder.id%}">
+                            <input id="cut()" value="{{folder.id}}" name="folder" type="hidden">
+                            <div class="modal fade" id="exampleModal" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">수정하기</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="col-form-label">제목:</label>
+                                                    <input type="text" class="form-control" id="recipient-name" name="title" placeholder="{{folder.title}}">
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">수정하기</button>
+                                            </div>
+                                      </div>
+                                    </div>
+                            </div>
+                    </form>
+
+
+                    
                 </div>
             </a>    
             {% endfor %}

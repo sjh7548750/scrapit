@@ -89,7 +89,7 @@ header.masthead {
     background-position: 15% right;
     text-align: right;
     position: relative;
-    z-index: 9999;
+    z-index: -1;
 /*
     position: relative;
     background-color:rgb(86, 128, 56);
