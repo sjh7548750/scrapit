@@ -1,17 +1,50 @@
-body {
-    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+@font-face { 
+    font-family: 'WONDotum'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/WONDotum.woff') format('woff'); 
+    font-weight: normal; 
+    font-style: normal; 
+}
+@font-face { 
+    font-family: 'yg-jalnan'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') 
+    format('woff'); 
+    font-weight: normal; 
+    font-style: normal; 
+}
+@font-face { 
+    font-family: 'BBTreeGR'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGR.woff') 
+    format('woff'); 
+    font-weight: normal; 
+    font-style: normal; 
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 700;
+.navbar_top{
+    background: rgb(86, 128, 56);
+    height: 4em;
+    width: 100%;
 }
-
+.navbar_top .navbar-title{
+    font-family: 'yg-jalnan';
+    font-size: 1.5em;
+    display: inline-block;
+    height: inherit;
+    left: 0;
+    line-height: inherit;
+    color: white;
+    text-transform: none;
+    padding: 0;
+    float: left;
+    padding-top: 15px;
+    padding-left: 15px;
+}
+.navbar_top .btn-light{
+    font-family: 'yg-jalnan';
+    float: right;
+    margin-top: 12px;
+    margin-right: 15px;
+}
 .top{
     height: 70px;
     width:100%;
@@ -32,25 +65,42 @@ h6 {
 .top.top-center{
     text-align: center;
     flex: 1;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 0px;
+    padding-left: 0px;
 }
+.pagename{
+    font-family: 'yg-jalnan';
+    font-size: 4em;
+    font-weight: bold;
+}
+
 .top.top-right{
     flex: 1;
 }
 
 header.masthead {
-    position: relative;
-    background-color:rgb(250, 177, 7);
-    /*background: url("../img/bg-masthead.jpg") no-repeat center center;*/
+    color: #f8f7f4;
+    padding-top:3em;
+    padding-bottom: 40em;
+    background-color: #0c0c0c;
+    background: url("../image/homeback.png");
     background-size: cover;
-    padding-top: 8rem;
-    padding-bottom: 8rem;
+    background-repeat: no-repeat;
+    background-position: 15% right;
+    text-align: right;
+    position: relative;
+    z-index: 9999;
+/*
+    position: relative;
+    background-color:rgb(86, 128, 56);
+    background: url("../img/bg-masthead.jpg") no-repeat center center;
+    background-size: cover;
+    padding-top: 0;
+    padding-bottom: 0;*/
 }
 
 header.masthead .overlay {
     position: absolute;
-    background-color:rgb(250, 177, 7);
     height: 70%;
     width: 100%;
     top: 0;
@@ -64,13 +114,20 @@ header.masthead .overlay {
         padding-bottom: 8rem;
     }
     header.masthead h1 {
+        font-family: 'yg-jalnan';
         font-size: 3rem;
+        color: rgb(86, 128, 56);
     }
+}
+#linkinsert::placeholder{
+    color:white;
+    font-family: 'BBTreeGR';
 }
 
 .btn-block{
     display:block;
     width:100%;
+    font-family: 'yg-jalnan'
 }
 
 .row{

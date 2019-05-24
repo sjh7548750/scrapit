@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html>
-{%  load staticfiles %}
+{% load staticfiles %}
 <head>
-
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="{% static 'css/home.css' %}" rel="stylesheet">
 </head>
 
 <body>
-    {% load socialaccount %}    
-    {% providers_media_js %} 
+    {% load socialaccount %}
+    {% providers_media_js %}
     {% if user.is_authenticated %}
     <!--위쪽 부분-->
-    <nav class="navbar navbar-light bg-light static-top">
-        <a class="navbar-brand" href="#">SCRAP-it</a>
+    <nav class="navbar_top">
+        <a class="navbar-title" href="#">SCRAP-it</a>
         {% if user.is_authenticated %}
-        <a class="btn btn-light" href="{% url 'logout' %}">LogOut</a>
+        <a class="btn btn-light" href="#">LogOut</a>
         {% endif %}
-
     </nav>
 
     <!--본 내용 - (1)-->
@@ -27,7 +24,7 @@
         <div class="container-fluid">
             <div class="top">
                 <div class="top-left">
-                    <img id="imgLogo" src="{% static 'image/sublogo.png'%}">
+                    <img id="imgLogo" src="{% static 'image/logo.png' %}">
                 </div>
                 <div class="top-center">
                     <h2 class="pagename" style="padding-top:20px; font-size:20px;">HOME</h2>
@@ -57,15 +54,15 @@
                     <h1 class="mb-5">Scrap your LINK!</h1>
                 </div>
                 <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                    <form action="{% url 'create' %}" method="post">
+                    <form action = "{% url 'create' %}" method="post">
                         {% csrf_token %}
                         <div class="form-row">
                             <div class="col-12 col-md-9 mb-2 mb-md-0">
-                                <input type="url" name="url" class="form-control form-control-lg"
-                                    style="background-color: rgb(252,213,119)" placeholder="ex) https://www.abcd.com">
+                                <input type="url" class="form-control form-control-lg" id="url"
+                                    style="background-color: rgb(86, 128, 56)" placeholder="ex) https://www.naver.com">
                             </div>
                             <div class="col-12 col-md-3">
-                                <button type="submit" class="btn btn-block btn-lg btn-outline-dark">Sign up!</button>
+                                <button type="submit" class="btn btn-block btn-lg btn-outline-dark">Scrap</button>
                             </div>
                         </div>
                     </form>
@@ -80,13 +77,11 @@
         </div>
     </div>-->
     <!-- 저장한 링크 뜨는 부분 -->
-    
-    
     <section class=cardlist>
         <div class="row" style="margin-top:60px">
             {% for scrap in user.scrap_set.all %}
             <div class="col-md-3 col-sm-3 col-xs-6">
-                <div OnClick="location.href"='{{scrap.address}}' style="cursor:pointer;" class="card">
+                <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">{{scrap.title}}</h5>
                         <p class="card-text">{{scrap.address}}</p>
@@ -95,17 +90,35 @@
                     <div class="card-footer">
                         <small class="text-muted">{{scrap.pub_date}}</small>
                     </div>
-                    <a href="{%url 'delete' scrap.id %}">DELETE</a>
+                    <a href="{% url 'delete' scrap_id %}">DELETE</a>
                 </div>
             </div>
             {% endfor %}
         </div>
     </section>
     {% else %}
-<!--  여기에 로그인이 안된 접근시 로그인페이지로 갈 수 있는 버튼을 만든다!!    -->
+<!-- 로그인 안된 접근시 로그인 페이지로 갈 수 있는 버튼 -->
 
-    
     {% endif %}
+<!--
+<div id="jquerySideBar1558365128135" class="sidebar-container left" style="height:200px; width:200px; top: 250px; left: 0px">
+        <div class="sidebar-body" style="height:200px; width: 200px; display:none;">
+            <ul id="pglist" style="z-index:9999" class="sidebar-menu">
+                <li id="L-LeI3GbpeeKru5FQtHTj" style="margin-left:0px">
+                    <a class="point" style="display:inline-flex" onclick="loadSiteCookieInfo('-LeI3GbpeeKru5FQtHTj','1','a2','1558365128132','U2FsdGVkX1/IIBPufmt0z8cKnzJjuWTpU81xeTefih0=')">
+                        <p class=truncated" style="width:160px;">HOME</p>
+                    </a>
+                </li>
+                <li style="margin-bottom: 50px;">
+                    <a>
+                        <p></p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="sidebar-inject left" style="height:200px; width: 50px; left:150px; display: bloack;"></div>
+    </div>
+-->
     
 </body>
 
