@@ -62,7 +62,7 @@
                         {% csrf_token %}
                         <div class="form-row">
                             <div class="col-12 col-md-9 mb-2 mb-md-0">
-                                <input type="url" class="form-control form-control-lg" id="linkinsert"
+                                <input type="url" class="form-control form-control-lg" id="linkinsert" name="url"
                                     style="background-color: rgb(86, 128, 56); color:white;" placeholder="ex) https://www.naver.com">
                             </div>
                             <div class="col-12 col-md-3">
@@ -87,23 +87,23 @@
             <div class="col-md-3 col-sm-3 col-xs-6">
                 <div class="card">
                     <div class="card-header" onclick="window.open('{{scrap.address}}')" style="cursor:pointer;" >
-                        <h5 class="card-title">{{scrap.title}}</h5>
+                        <h3 class="card-title">{{scrap.title}}</h3>
                         <p class="card-text">{{scrap.address}}</p>
                         <img src="/media/{{scrap.preview}}" class="card-img-top">
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">{{scrap.pub_date}}</small>
-                        <p>설명 <br> {{scrap.description}}</p>
+                        <p>MEMO <br> {{scrap.description}}</p>
                     </div>
 
                     <!-- 드랍다운 버튼 -->
-                    <div class="btn-group">
+                    <div class="btn-group" >
                         <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Action
+                        더 보기
                         </button>
                         <div class="dropdown-menu">
                         <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal" href="#">제목변경</a>
-                        <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal" href="#">내용변경</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal" href="#">메모변경</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{% url 'delete' scrap.id %}">삭제하기</a>
                         </div>
@@ -122,11 +122,11 @@
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <label for="recipient-name" class="col-form-label">제목:</label>
-                                                <input type="text" class="form-control" id="recipient-name" name="title">
+                                                <input type="text" class="form-control" id="recipient-name" name="title" placeholder="{{scrap.title}}">
                                             </div>
                                             <div class="form-group">
-                                                <label for="message-text" class="col-form-label">설명:</label>
-                                                <textarea class="form-control" id="message-text" name="description"></textarea>
+                                                <label for="message-text" class="col-form-label">MEMO:</label>
+                                                <textarea type="text" class="form-control" id="message-text" name="description" placeholder="{{scrap.description}}"></textarea>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
