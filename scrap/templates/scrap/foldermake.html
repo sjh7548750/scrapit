@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+{%  load staticfiles %}
+<head>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    {% load socialaccount %}    
+    {% providers_media_js %} 
+    {% if user.is_authenticated %}
+    <!--위쪽 부분-->
+    <nav class="navbar navbar-light bg-light static-top">
+        <a class="navbar-brand" href="#">SCRAP-it</a>
+        {% if user.is_authenticated %}
+        <a class="btn btn-light" href="{% url 'logout' %}">LogOut</a>
+        {% endif %}
+
+    </nav>
+
+    <!--본 내용 - (1)-->
+    <nav class="navbar navar-default" style="background-color:white; border:0px solid white">
+        <div class="container-fluid">
+            <div class="top">
+                <div class="top-left">
+                    <img id="imgLogo" src="{% static 'image/sublogo.png'%}">
+                </div>
+                <div class="top-center">
+                    <h2 class="pagename" style="padding-top:20px; font-size:20px;">HOME</h2>
+                </div>
+                <div class="top-right">
+                    <ul class="nav navbar-nav navbar-right" style="padding-top:10px; margin-right:20px">
+                        <li class="dropdown">
+                            <div class="logo" role="button" style="height:60px; text-align:center">
+                                <img class="point profilePhoto userPhoto" src="">
+                            </div>
+                            <ul class="dropdown-menu" id="menu"
+                                style="position: absolute;background-color: white; border:1px solid; height:155px;">
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!--본내용 - (2)-->
+    <header class="masthead text-white text-center">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row-page">
+                <div class="col-xl-9 mx-auto">
+                    <h1 class="mb-5">Scrap your LINK!</h1>
+                </div>
+                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+                    <form action="{% url 'create' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-row">
+                           
+                            <div class="col-12 col-md-3">
+                                <button type="submit" class="btn btn-block btn-lg btn-outline-dark">폴더 만들기</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--필요 아이콘 넣는 부분
+    <div class="row" style="margin-top:41px">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+
+        </div>
+    </div>-->
+    <!-- 저장한 링크 뜨는 부분 -->
+    
+    
+    <section class=cardlist>
+        <div class="row" style="margin-top:60px">
+            {% for scrap in user.scrap_set.all %}
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <div OnClick="location.href"='{{scrap.address}}' style="cursor:pointer;" class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">{{folder.title}}</h5>
+                    </div>
+                    <a href="{%url 'delete' scrap.id %}">DELETE</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+   
+    {% endif %}
+    
+    
+</body>
+
+</html>
