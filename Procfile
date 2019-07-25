@@ -1,0 +1,1 @@
+web: gunicorn scrapit.wsgi --log-file -
