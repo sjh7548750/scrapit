@@ -66,12 +66,14 @@ def create(request, folder_id):
 
 def delete(request, scrap_id):
     scraps = get_object_or_404(Scrap, pk=scrap_id)
+    folder=scraps.folder.id
     scraps.delete()
-    return redirect('home')
+
+    return redirect('/folder/'+str(folder))
 
 def logout(request):
     auth.logout(request) #로그아웃 상태로 바꾸기
-    return render(request, 'scrap/about.html')
+    return redirect('about')
 
 def folder(request):
     folders = Folder.objects.all()
